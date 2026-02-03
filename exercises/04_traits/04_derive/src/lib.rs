@@ -8,13 +8,17 @@
 // print both sides of the comparison to the terminal.
 // If the compared type doesn't implement `Debug`, it doesn't know how to represent them!
 
-#[derive(PartialEq)]
+#[derive(PartialEq, Debug)]
 struct Ticket {
     title: String,
     description: String,
     status: String,
 }
 
+// Debug 提供调试格式的输出，用于用于 println!("{:?}",x)
+// PartialEq 提供相等比较 ( == 和 !=)
+// Clone .clone() 方法
+// Copy 类型具有复制语义
 #[cfg(test)]
 mod tests {
     use super::*;
