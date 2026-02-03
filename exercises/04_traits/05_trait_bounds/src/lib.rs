@@ -6,7 +6,14 @@
 // collections (e.g. BTreeMap).
 
 /// Return the minimum of two values.
-pub fn min<T>(left: T, right: T) -> T {
+/// 
+/// Trait 约束 限制泛型类型必须实现某些 trait
+/// T: PartialOrd T 必须实现 PartialOrd (可比较)
+/// PartialOrd 提供比较运算符 <,>,<=,>=
+/// where 子句 另一种约束语法，更清晰
+/// 
+/// 
+pub fn min<T: PartialOrd>(left: T, right: T) -> T {
     if left <= right {
         left
     } else {
