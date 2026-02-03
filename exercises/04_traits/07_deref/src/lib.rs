@@ -10,15 +10,42 @@ pub struct Ticket {
     status: String,
 }
 
+// 去除字符串的首位空格
 impl Ticket {
     pub fn title(&self) -> &str {
-        todo!()
+        self.title.trim()
     }
 
     pub fn description(&self) -> &str {
-        todo!()
+        self.description.trim()
     }
 }
+
+/// 为什么这样可行?
+/// 这展示了方法查找的 Deref 强制转换
+/// 1. self.title 是 String
+/// 2. 编译器查找 trim() 方法
+/// 3.String 本身没有trim()
+/// 4.编译器尝试Deref: String -> str
+/// 5.str 有trim() 方法
+/// 
+/// Deref 链
+/// String impl Deref<Target=str>
+/// str
+/// trim
+
+
+// 方法调用过程
+
+// let s: String = "  hello  ".to_string();
+// s.trim();  // 编译器如何找到 trim()？
+
+// // 编译器内部逻辑：
+// // 1. 在 String 上找 trim()？ ❌ 没有
+// // 2. String 实现了 Deref<Target=str>？ ✅
+// // 3. 在 str 上找 trim()？ ✅ 找到了！
+// // 4. 自动插入 &*self.title：(&(*self.title)).trim()
+
 
 #[cfg(test)]
 mod tests {
