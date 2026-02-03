@@ -8,7 +8,18 @@ struct Ticket {
 
 // TODO: Implement the `PartialEq` trait for `Ticket`.
 
-impl PartialEq for Ticket {}
+impl PartialEq for Ticket {
+    fn eq(&self, other: &Self) -> bool {
+        self.title == other.title
+            && self.description == other.description
+            && self.status == other.status
+    }
+}
+
+
+// 关键概念
+// == 运算符 对应 PartialEq:eq 方法
+// != 运算符 对应 PartialEq:ne 方法 (默认实现为 !eq)
 
 #[cfg(test)]
 mod tests {
