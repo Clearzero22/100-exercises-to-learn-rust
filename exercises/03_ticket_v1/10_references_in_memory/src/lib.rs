@@ -13,16 +13,16 @@ mod tests {
 
     #[test]
     fn u16_ref_size() {
-        assert_eq!(size_of::<&u16>(), todo!());
+        assert_eq!(size_of::<&u16>(), 8); // Reference = pointer = 8 bytes on 64-bit
     }
 
     #[test]
     fn u64_mut_ref_size() {
-        assert_eq!(size_of::<&mut u64>(), todo!());
+        assert_eq!(size_of::<&mut u64>(), 8); // Mutable reference = pointer = 8 bytes
     }
 
     #[test]
     fn ticket_ref_size() {
-        assert_eq!(size_of::<&Ticket>(), todo!());
+        assert_eq!(size_of::<&Ticket>(), 8); // Reference to struct = pointer = 8 bytes
     }
 }
